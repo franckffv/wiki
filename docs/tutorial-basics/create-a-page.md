@@ -230,6 +230,9 @@ networks:
 
 ```
 
+```bash
+ docker stack deploy -c traefik.yml traefik
+```
 
 
 ### Portainer
@@ -277,6 +280,10 @@ services:
 networks:
   traefik-public:
     external: true
+```
+
+```bash
+ docker stack deploy -c portainer.yml portainer
 ```
 
 ## Deploy new app with docker-compose
