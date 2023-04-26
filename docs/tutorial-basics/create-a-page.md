@@ -2,42 +2,73 @@
 sidebar_position: 1
 ---
 
-# Create a Page
+# Step 1: SetUp server
 
-Add **Markdown or React** files to `src/pages` to create a **standalone page**:
+## Install docker and docker-compose
+Follow the instructions on the official website to install docker and docker-compose on your machine.
+Install Docker Engine on Debian : https://docs.docker.com/engine/install/debian/
 
-- `src/pages/index.js` → `localhost:3000/`
-- `src/pages/foo.md` → `localhost:3000/foo`
-- `src/pages/foo/bar.js` → `localhost:3000/foo/bar`
-
-## Create your first React Page
-
-Create a file at `src/pages/my-react-page.js`:
-
-```jsx title="src/pages/my-react-page.js"
-import React from 'react';
-import Layout from '@theme/Layout';
-
-export default function MyReactPage() {
-  return (
-    <Layout>
-      <h1>My React page</h1>
-      <p>This is a React page</p>
-    </Layout>
-  );
-}
+# For debian 11 in 2023
+Uninstall old docker version 
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
 
-A new page is now available at [http://localhost:3000/my-react-page](http://localhost:3000/my-react-page).
+## Set up the repository
 
-## Create your first Markdown Page
+Update the apt package index and install packages to allow apt to use a repository over HTTPS:
 
-Create a file at `src/pages/my-markdown-page.md`:
+```bash
+ sudo apt-get update
 
-```mdx title="src/pages/my-markdown-page.md"
-# My Markdown page
-
-This is a Markdown page
+ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg
 ```
 
-A new page is now available at [http://localhost:3000/my-markdown-page](http://localhost:3000/my-markdown-page).
+**Add Docker’s official GPG key:**
+
+```bash
+ sudo install -m 0755 -d /etc/apt/keyrings
+
+ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+ sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+**Use the following command to set up the repository:**
+```bash
+    echo \
+      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+## Install Docker Engine
+
+This procedure works for Debian on x86_64 / amd64, armhf, arm64, and Raspbian.
+
+Update the apt package index:
+
+```bash
+ sudo apt-get update
+```
+
+Install Docker Engine, containerd, and Docker Compose.
+Latest
+Specific version
+
+
+To install the latest version, run:
+```bash
+ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+Verify that the Docker Engine installation is successful by running the hello-world image:
+
+```bash
+ sudo docker run hello-world
+```
+
+This command downloads a test image and runs it in a container. When the container runs, it prints a confirmation message and exits.

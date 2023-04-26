@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Wiki',
-  tagline: 'Dinosaurs are cool',
+  title: 'Franck Valentino',
+  tagline: 'Wiki to do amazing things',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -78,7 +78,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/franckffv',
             label: 'GitHub',
             position: 'right',
           },
