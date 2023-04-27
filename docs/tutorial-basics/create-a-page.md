@@ -139,10 +139,6 @@ chmod 600 /mnt/data/traefik/acme.json
 mkdir /mnt/compose 
 ```
 
-for Portainer
-
-mkdir /mnt/data/portainer
-
 ### Traefik docker compose
 
 Traefik is our main reverse proxy and it will sit in front of all out application. we will control all the routes to our containers using traefik.
@@ -150,6 +146,7 @@ Traefik is our main reverse proxy and it will sit in front of all out applicatio
 ```bash
 cd /mnt/compose
 touch traefik.yml
+nano traefik.yml
 ```
 
 ```yaml
@@ -229,7 +226,7 @@ networks:
     external: true
 
 ```
-
+**Deploy the stack**
 ```bash
  docker stack deploy -c traefik.yml traefik
 ```
@@ -238,6 +235,18 @@ networks:
 ### Portainer
 
 Portainer is our container management software. We will use to deploy our docker containers.
+
+Create folder for Portainer
+
+```bash
+mkdir /mnt/data/portainer
+```
+
+```bash
+cd /mnt/compose
+touch portainer.yml
+nano portainer.yml
+```
 
 ```yml
 version: "3.2"
@@ -282,6 +291,7 @@ networks:
     external: true
 ```
 
+**Deploy the stack**
 ```bash
  docker stack deploy -c portainer.yml portainer
 ```
@@ -295,7 +305,7 @@ networks:
 
 ### Example for deploying gitlab CE
 
-Login ssh to your server dans create the directory
+Login ssh to your server dans create the directory for gitlab
 
 ```bash
     mkdir /mnt/gitlabce
