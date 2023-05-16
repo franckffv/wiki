@@ -78,8 +78,6 @@ nano traefik.yml
 ```
 
 ```yaml
-version: "3.3"
-
 services:
   traefik:
     image: "traefik:latest"
@@ -177,8 +175,6 @@ nano portainer.yml
 ```
 
 ```yml
-version: "3.2"
-
 services:
   agent:
     image: portainer/agent

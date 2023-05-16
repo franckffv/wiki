@@ -24,8 +24,6 @@ Select you environment and click on "Add stack"
 Copy the docker-compose.yml file and click on "Deploy the stack". Please make sure the directory (volumes in docker compose) is created.
 
 ```yml
-version: '3'
-
 services:
   gitlabce:
     image: gitlab/gitlab-ce
@@ -80,8 +78,6 @@ Select you environment and click on "Add stack"
 Copy the docker-compose.yml file and click on "Deploy the stack". Please make sure the directory (volumes in docker compose) is created.
 
 ```yml
-version: "3.8"
-
 services:
   db:
     image: postgres:13
